@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+raboof:
+  name: Raboof
+  iso: RF
+
+zab:
+  name: Zab
+  iso: ZB

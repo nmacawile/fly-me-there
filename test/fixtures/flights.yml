@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+foobar_to_baz:
+  origin: foobar
+  destination: baz
+  depart: 2018-01-05 07:44:28
+  arrive: 2018-01-05 10:44:28
+  capacity: 100
+  fare: 21.10
+
+baz_to_foobar:
+  origin: baz
+  destination: foobar
+  depart: 2018-01-05 08:44:28
+  arrive: 2018-01-05 11:44:28
+  capacity: 120
+  fare: 19.99

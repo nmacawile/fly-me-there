@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+foobar:
+  name: Foobar International
+  iata: FOO
+  municipality: Foobar City
+  country: raboof
+
+baz:
+  name: Baz Airport
+  iata: BAZ
+  municipality: Baz City
+  country: zab

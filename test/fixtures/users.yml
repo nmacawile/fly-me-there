@@ -1,0 +1,12 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+test:
+  name: Test
+  email: test@email.com
+  
+spongebob:
+  name: Spongebob
+  email: bob@email.com
+
+patrick:
+  name: Patrick
+  email: pat@email.com
