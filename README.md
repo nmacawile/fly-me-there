@@ -1,24 +1,10 @@
-# README
+# Project: Fly me there
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## What is this project?
+It is an app desighned to help the users find and book one-way flights to almost anywhere around the globe. 
 
-Things you may want to cover:
+## Purpose of this project
+This app makes use of some complicated data structures. It necessary to use the advanced forms to represent the data properly in the front-end. 
+The student will have lots of practice dealing with nested forms and dropdown menus while building this project.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[Link to the project page](https://www.theodinproject.com/lessons/building-advanced-forms)
