@@ -53,6 +53,8 @@ GEM
     crass (1.0.3)
     erubis (2.7.0)
     execjs (2.7.0)
+    faker (1.8.7)
+      i18n (>= 0.7)
     ffi (1.9.18)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -161,6 +163,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
+  faker (= 1.8.7)
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)

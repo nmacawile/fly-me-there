@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 20180105141708) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["country_id"], name: "index_airports_on_country_id", using: :btree
-    t.index ["iata"], name: "index_airports_on_iata", unique: true, using: :btree
   end
 
   create_table "bookings", force: :cascade do |t|
