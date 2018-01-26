@@ -5,8 +5,36 @@ foobar_to_baz:
   destination: baz
   depart: 2018-01-05 07:44:28
   arrive: 2018-01-05 10:44:28
-  capacity: 100
+  capacity: 4
   fare: 21.10
+  created_at: 2018-01-05 01:00:00
+
+foobar_to_baz2:
+  origin: foobar
+  destination: baz
+  depart: 2018-01-05 11:00:00
+  arrive: 2018-01-05 14:00:00
+  capacity: 120
+  fare: 25.00
+  created_at: 2018-01-05 01:01:00
+
+foobar_to_baz3:
+  origin: foobar
+  destination: baz
+  depart: 2018-01-06 11:00:00
+  arrive: 2018-01-06 14:00:00
+  capacity: 120
+  fare: 25.00
+  created_at: 2018-01-05 01:02:00
+  
+foobar_to_air:
+  origin: foobar
+  destination: air
+  depart: 2018-01-05 11:00:00
+  arrive: 2018-01-05 14:00:00
+  capacity: 120
+  fare: 25.00
+  created_at: 2018-01-05 01:03:00
 
 baz_to_foobar:
   origin: baz
@@ -15,3 +43,46 @@ baz_to_foobar:
   arrive: 2018-01-05 11:44:28
   capacity: 120
   fare: 19.99
+  created_at: 2018-01-05 02:00:00
+  
+air_to_foobar:
+  origin: air
+  destination: foobar
+  depart: 2018-01-05 15:00:00
+  arrive: 2018-01-05 17:00:00
+  capacity: 120
+  fare: 19.99
+  created_at: 2018-01-05 02:01:00
+
+<% 20.times do |n| %>
+flight<%= n %>:
+  origin: airport0
+  destination: airport1
+  depart: 2018-01-10 06:00:00
+  arrive: 2018-01-10 12:00:00
+  capacity: 100
+  fare: 20.00
+  created_at: 2018-01-06 01:<%= sprintf("%02d", n) %>:00
+<% end %>
+
+<% 20.times do |n| %>
+flight<%= n + 20 %>:
+  origin: airport2
+  destination: airport3
+  depart: 2018-01-10 12:00:00
+  arrive: 2018-01-10 18:00:00
+  capacity: 100
+  fare: 20.00
+  created_at: 2018-01-07 01:<%= sprintf("%02d", n) %>:00
+<% end %>
+
+<% 10.times do |n| %>
+flight<%= n + 40 %>:
+  origin: airport<%= 2*n + 40 %>
+  destination: airport<%= 2*n + 41 %>
+  depart: 2018-01-10 12:00:00
+  arrive: 2018-01-10 18:00:00
+  capacity: 100
+  fare: 20.00
+  created_at: 2018-01-08 01:<%= sprintf("%02d", n) %>:00
+<% end %>

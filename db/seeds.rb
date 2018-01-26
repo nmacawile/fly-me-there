@@ -27,7 +27,7 @@ end
 
 #====================================================================
 
-50.times do
+1000.times do
   origin, destination = Airport.joins(:country).where("countries.name" => "United States").order("RANDOM()").limit(2)
   depart_date = Faker::Date.forward(10)
   depart = depart_date + rand(4).hours
@@ -45,7 +45,8 @@ end
   passengers = User.order("RANDOM()").limit(20)
   passengers.each do |passenger|
     Booking.create!(user: passenger,
-                    flight: flight)
+                    flight: flight,
+                    passengers: rand(1..4))
   end
 end
 

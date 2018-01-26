@@ -1,0 +1,48 @@
+<% if @flights.any? %>
+  <%= form_tag new_booking_path, enforce_utf8: false , method: :get do %>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Route</th>
+          <th>Description</th>
+          <th>Departure</th>
+          <th>Duration</th>
+          <th>Arrival</th>
+          <th>Available Seats</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @flights.each do |flight| %>
+        <tr class="booking-row">
+          <td title="<%="#{flight.origin.name} to #{flight.destination.name}" %>">
+            <div><strong><%= flight.origin.iata %></strong></div>
+            <div><strong><%= flight.destination.iata %></strong></div>
+          </td>
+          
+          <td>
+              <div><%= "#{flight.origin.municipality}, #{flight.origin.country.iso}" %></div>
+              <div><%= "#{flight.destination.municipality}, #{flight.destination.country.iso}" %></div>
+          </td>
+          
+          <td>
+            <div><%= flight.depart.strftime('%R') %></div>
+            <div><%= flight.depart.strftime('%b %d, %Y') %></div>
+          </td>
+          <td><%= flight.duration %></td>
+          <td>
+            <div><%= flight.arrive.strftime('%R') %></div>
+            <div><%= flight.arrive.strftime('%b %d, %Y') %></div>
+          </td>
+          <td><%= "#{flight.available_seats}/#{flight.capacity}" %></td>
+          <td><%= radio_button_tag :flight, flight.id, false, class: ["radio", "booking-radio"] %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <%= submit_tag "Book", name: nil, id: "booking-button", disabled: "true", class: ["btn", "btn-primary", "btn-block"] %>
+  <% end %>
+<% else %>
+  <div>No results.</div>
+<% end %>
+<%= will_paginate @flights %>

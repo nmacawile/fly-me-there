@@ -1,0 +1,28 @@
+<%= form_tag(flights_path, enforce_utf8: false , method: :get) do %>
+  <div class="row">
+    <div class="form-group col-md-6">
+      <%= label_tag :origin %>
+      <%= select_tag :origin, grouped_options_for_select(@options, params[:origin]), { include_blank: "Any", class: "form-control selectpicker", data: { "live-search": true } } %>
+    </div>
+    <div class="form-group col-md-6">
+      <%= label_tag :destination %>
+      <%= select_tag :destination, grouped_options_for_select(@options, params[:destination]), { include_blank: "Any", class: "form-control selectpicker", data: { "live-search": true } } %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="form-group col-md-6">
+      <%= label_tag :seats %>
+      <%= select_tag :seats, options_for_select([["Single", 1], ["2 seats", 2], ["3 seats", 3], ["4 seats", 4]], params[:seats]), { include_blank: "Select", class: "form-control" } %>
+    </div>
+    
+    <div class="form-group col-md-6">
+      <%= label_tag :departure %>
+      <%= text_field_tag :depart, params[:depart], class:["form-control", "datepicker"], placeholder: "Any date" %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= submit_tag "Search", name: nil, class: ["btn", "btn-primary btn-block"] %>
+  </div>
+<% end %>

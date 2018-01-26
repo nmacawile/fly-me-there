@@ -1,0 +1,15 @@
+// Place all the styles related to the flights controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.table > thead > tr > th, .table > tbody > tr > td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.booking-selected {
+  background-color: black !important;
+}

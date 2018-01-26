@@ -168,7 +168,7 @@ Chub Cay International Airport,CCZ,Chub Cay,Bahamas
 Exuma International Airport,GGT,Exuma,Bahamas
 Grand Bahama International Airport,FPO,Freeport,Bahamas
 Rock Sound International Airport,RSD,South Eleuthera,Bahamas
-Marsh Harbor International Airport,MHH[1],Marsh Harbour,Bahamas
+Marsh Harbor International Airport,MHH,Marsh Harbour,Bahamas
 Grantley Adams International Airport,BGI,"Christ Church, Barbados",Barbados
 Terrance B. Lettsome International Airport,EIS,Road Town,British Virgin Islands
 Charles Kirkconnell International Airport,CYB,Cayman Brac,Cayman Islands
@@ -386,7 +386,7 @@ St. Petersburg-Clearwater International Airport,PIE,St. Petersburg (FL),United S
 Syracuse Hancock International Airport,SYR,Syracuse,United States
 Tallahassee International Airport,TLH,Tallahassee,United States
 Tampa International Airport,TPA,Tampa,United States
-Ronald Reagan Washington National Airport**,DCA,"Washington, D.C.",United States
+Ronald Reagan Washington National Airport,DCA,"Washington, D.C.",United States
 Washington Dulles International Airport,IAD,Washington D.C.,United States
 Palm Beach International Airport,PBI,West Palm Beach,United States
 Ministro Pistarini International Airport,EZE,Buenos Aires,Argentina

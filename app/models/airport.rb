@@ -5,4 +5,13 @@ class Airport < ApplicationRecord
   validates :iata, presence: true,
                    uniqueness: { case_sensitive: false }
   validates :name, presence: true
+  
+  def self.list
+    grouped_list = {}
+    joins(:country).select(:name, :id, :municipality, :iata, 'countries.name as country_name').order("country_name", :name).each do |a|
+      grouped_list[a.country_name] ||= []
+      grouped_list[a.country_name] << ["#{a.iata} #{a.name} (#{a.municipality})", a.iata]
+    end
+    grouped_list
+  end
 end

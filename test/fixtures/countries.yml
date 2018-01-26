@@ -7,3 +7,27 @@ raboof:
 zab:
   name: Zab
   iso: ZB
+  
+ria:
+  name: Ria
+  iso: RA
+  
+country0:
+  name: Zero
+  iso: ZE
+  
+country1:
+  name: One
+  iso: ON
+  
+country2:
+  name: Two
+  iso: TW
+  
+country3:
+  name: Three
+  iso: TH
+  
+country4:
+  name: Four
+  iso: FO

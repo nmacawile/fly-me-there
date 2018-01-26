@@ -11,3 +11,43 @@ baz:
   iata: BAZ
   municipality: Baz City
   country: zab
+  
+air:
+  name: Airport
+  iata: AIR
+  municipality: Air City
+  country: ria
+
+airport0:
+  name: Zero Airport
+  iata: ZER
+  municipality: Zero City
+  country: country0
+  
+airport1:
+  name: One Airport
+  iata: ONE
+  municipality: One City
+  country: country1
+  
+airport2:
+  name: Two Airport
+  iata: TWO
+  municipality: Two City
+  country: country2
+  
+airport3:
+  name: Three Airport
+  iata: THR
+  municipality: Three City
+  country: country3
+
+<% iata = "AAA" %>
+<% 20.times do |n| %>
+airport<%= 40 + n %>:
+  name: Airport <%= 40 + n %>
+  iata: <%= iata %>
+  municipality: City <%= 40 + n %>
+  country: country4
+<% iata = iata.next %>
+<% end %>

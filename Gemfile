@@ -8,6 +8,18 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.3'
+# Time Difference
+gem 'time_difference'
+# Bootstrap Select
+gem 'bootstrap-select-rails'
+# Pagination
+gem 'will_paginate', '3.1.6'
+# Bootstrap will_paginate
+gem 'bootstrap-will_paginate'
+# Datepicker
+gem 'bootstrap-datepicker-rails'
+# Bootstrap
+gem 'bootstrap-sass', '3.3.7'
 # Faker
 gem 'faker', '1.8.7'
 # Use postgresql as the database for Active Record
