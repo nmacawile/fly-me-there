@@ -51,3 +51,29 @@ airport<%= 40 + n %>:
   country: country4
 <% iata = iata.next %>
 <% end %>
+
+<% iata = "UTA" %>
+<% 5.times do |n| %>
+utopia<%= 1 + n %>:
+  name: Utopia-<%= 1 + n %>
+  iata: <%= iata %>
+  municipality: Utopia city <%= 1 + n %>
+  country: utopia
+<% iata = iata.next %>
+<% end %>
+
+<% iata = "ATA" %>
+<% 5.times do |n| %>
+atlantis<%= 1 + n %>:
+  name: Atlantis-<%= 1 + n %>
+  iata: <%= iata %>
+  municipality: Atlantis city <%= 1 + n %>
+  country: atlantis
+<% iata = iata.next %>
+<% end %>
+
+dystopia:
+  name: Dystopia airport
+  iata: DYS
+  municipality: Dystopia city
+  country: dystopia

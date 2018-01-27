@@ -22,15 +22,28 @@ class Flight < ApplicationRecord
   
   def self.search_route(origin = nil, destination = nil)
     if !origin.blank? && !destination.blank? 
-      joins(:origin, :destination)
-      .where(airports: { iata: origin },
-      "destinations_flights": { iata: destination })
+      if origin.size == 3 && destination.size == 3
+        joins(:origin, :destination)
+        .where("airports.iata = ? AND destinations_flights.iata = ?", origin, destination)
+      elsif origin.size == 3 && destination.size == 2
+        joins(:origin, [destination: :country]).where("airports.iata = ? AND countries.iso = ?", origin, destination)
+      elsif origin.size == 2 && destination.size == 3
+        joins([origin: :country], :destination).where("countries.iso = ? AND destinations_flights.iata = ?", origin, destination)
+      else
+        joins([origin: :country], [destination: :country]).where("countries.iso = ? AND countries_airports.iso = ?", origin, destination)
+      end
     elsif !origin.blank?
-      joins(:origin)
-      .where(airports: {iata: origin})
+      if origin.size == 3
+        joins(:origin).where(airports: { iata: origin })
+      else
+        joins([origin: :country]).where("countries.iso = ?", origin)
+      end
     elsif !destination.blank?
-      joins(:destination)
-     .where(airports: {iata: destination})
+      if destination.size == 3
+        joins(:destination).where(airports: { iata: destination })
+      else
+        joins([destination: :country]).where("countries.iso = ?", destination)
+      end
     else
       all
     end
@@ -52,9 +65,9 @@ class Flight < ApplicationRecord
      .group("flights.id")
      .select("flights.*")
      .having("flights.capacity - COUNT(flights.id) >= ?", seats)
-   else
-     all
-   end
+    else
+      all
+    end
   end
   
   private

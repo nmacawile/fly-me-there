@@ -8,9 +8,9 @@ class Airport < ApplicationRecord
   
   def self.list
     grouped_list = {}
-    joins(:country).select(:name, :id, :municipality, :iata, 'countries.name as country_name').order("country_name", :name).each do |a|
-      grouped_list[a.country_name] ||= []
-      grouped_list[a.country_name] << ["#{a.iata} #{a.name} (#{a.municipality})", a.iata]
+    includes(:country).order("countries.name", :name).each do |a|
+      grouped_list[a.country.name] ||= [["#{a.country.iso} #{a.country.name}", a.country.iso]]
+      grouped_list[a.country.name] << ["#{a.iata} #{a.name} (#{a.municipality}, #{a.country.name})", a.iata]
     end
     grouped_list
   end

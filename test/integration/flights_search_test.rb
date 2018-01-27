@@ -46,4 +46,46 @@ class FlightsSearchTest < ActionDispatch::IntegrationTest
     assert_select "tr.booking-row", 2
     assert_select "tr.booking-row > td", { text: %r(FOO\s+BAZ), count: 2 }
   end
+  
+  test "should return all flights from specified origin country to destination country" do
+    get flights_path, params: { origin: "UT", destination: "AT" }
+    assert_select "tr.booking-row", 9
+    assert_select "tr.booking-row > td", { text: %r(UTA\s+ATA), count: 1 }
+    assert_select "tr.booking-row > td", { text: %r(UTB\s+ATB), count: 1 }
+    assert_select "tr.booking-row > td", { text: %r(UTC\s+ATC), count: 1 }
+    assert_select "tr.booking-row > td", { text: %r(UTD\s+ATD), count: 1 }
+    assert_select "tr.booking-row > td", { text: %r(UTE\s+ATE), count: 1 }
+    assert_select "tr.booking-row > td", { text: %r(UTB\s+ATA), count: 1 }
+    assert_select "tr.booking-row > td", { text: %r(UTC\s+ATA), count: 1 }
+    assert_select "tr.booking-row > td", { text: %r(UTA\s+ATB), count: 1 }
+    assert_select "tr.booking-row > td", { text: %r(UTA\s+ATC), count: 1 }
+  end
+  
+  test "should return all flights from specified origin country to destination airport" do
+    get flights_path, params: { origin: "UT", destination: "ATA" }
+    assert_select "tr.booking-row", 3
+    assert_select "tr.booking-row > td", { text: %r(UTA\s+ATA), count: 1 }
+    assert_select "tr.booking-row > td", { text: %r(UTB\s+ATA), count: 1 }
+    assert_select "tr.booking-row > td", { text: %r(UTC\s+ATA), count: 1 }
+  end
+  
+  test "should return all flights from specified origin airport to destination country" do
+    get flights_path, params: { origin: "UTA", destination: "AT" }
+    assert_select "tr.booking-row", 3
+    assert_select "tr.booking-row > td", { text: %r(UTA\s+ATA), count: 1 }
+    assert_select "tr.booking-row > td", { text: %r(UTA\s+ATB), count: 1 }
+    assert_select "tr.booking-row > td", { text: %r(UTA\s+ATC), count: 1 }
+  end
+  
+  test "should return all flights coming from specified origin country" do
+    get flights_path, params: { origin: "UT" }
+    assert_select "tr.booking-row", 10
+    assert_select "tr.booking-row > td", { text: %r(UTD\s+DYS), count: 1 }
+  end
+  
+  test "should return all flights leaving to specified destination country" do
+    get flights_path, params: { destination: "AT" }
+    assert_select "tr.booking-row", 10
+    assert_select "tr.booking-row > td", { text: %r(DYS\s+ATD), count: 1 }
+  end
 end
