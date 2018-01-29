@@ -1,8 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 spongebob_foobar_to_baz:
-  user: spongebob
   flight: foobar_to_baz
-
+  
 patrick_baz_to_foobar:
-  user: patrick
   flight: baz_to_foobar

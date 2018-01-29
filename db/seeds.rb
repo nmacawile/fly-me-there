@@ -2,13 +2,6 @@ require 'csv'
 
 #====================================================================
 
-200.times do |n|
-  User.create!(name: Faker::Name.name,
-               email: "user#{n}@email.com")
-end
-
-#====================================================================
-
 CSV.foreach("./data/countries.csv", headers: true) do |row|
   country = row.to_h
   Country.create!(name: country["name"],
@@ -42,11 +35,16 @@ end
                    capacity: capacity,
                    fare: fare)
                    
-  passengers = User.order("RANDOM()").limit(20)
-  passengers.each do |passenger|
-    Booking.create!(user: passenger,
-                    flight: flight,
-                    passengers: rand(1..4))
+  Booking.create!(flight: flight)
+end
+
+#====================================================================
+
+Booking.all.each do |booking|
+  4.times do |n|
+    Passenger.create!(name: Faker::Name.name,
+                      email: "user#{n}@email.com",
+                      booking: booking)
   end
 end
 

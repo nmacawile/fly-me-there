@@ -1,8 +1,8 @@
 class Flight < ApplicationRecord
   belongs_to :origin, class_name: "Airport"
   belongs_to :destination, class_name: "Airport"
-  has_many :bookings
-  has_many :passengers, through: :bookings, source: :user
+  has_many :bookings, dependent: :destroy
+  has_many :passengers, through: :bookings
   validates :capacity, numericality: { greater_than: 0 }
   validates :fare, numericality: { greater_than_or_equal_to: 0 }
   validates :depart, presence: true
