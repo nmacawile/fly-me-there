@@ -5,9 +5,9 @@
 $(document).on 'turbolinks:load', ->
   $('.datepicker').datepicker
     clearBtn: true
-    startDate: 'Today'
+    startDate: '02/05/2018'
+    endDate: '02/15/2018'
     autoclose: true
-    todayHighlight: true
     
   $('.booking-row').click ->
     $('.booking-row').removeClass 'info'

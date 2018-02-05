@@ -2,14 +2,20 @@ require 'csv'
 
 #====================================================================
 
+start = Time.now
+print "Seeding countries..."
 CSV.foreach("./data/countries.csv", headers: true) do |row|
   country = row.to_h
   Country.create!(name: country["name"],
                   iso: country["iso"])
 end
+puts "done."
+puts "Duration: #{Time.now - start}"
 
 #====================================================================
 
+start = Time.now
+print "Seeding airports..."
 CSV.foreach("./data/airports.csv", headers: true) do |row|
   airport = row.to_h
   Airport.create!(name: airport["name"],
@@ -17,13 +23,17 @@ CSV.foreach("./data/airports.csv", headers: true) do |row|
                   municipality: airport["municipality"],
                   country: Country.find_by(name: airport["country"]))
 end
+puts "done."
+puts "Duration: #{Time.now - start}"
 
 #====================================================================
 
-1000.times do
+start = Time.now
+print "Seeding US domestic flights..."
+500.times do
   origin, destination = Airport.joins(:country).where("countries.name" => "United States").order("RANDOM()").limit(2)
-  depart_date = Faker::Date.forward(10)
-  depart = depart_date + rand(4).hours
+  depart_date = DateTime.parse("05/02/2018") + rand(11).days
+  depart = depart_date + rand(24).hours
   arrive = depart + rand(2..6).hours
   capacity = rand(18..30) * 10
   fare = rand(200..500)
@@ -34,19 +44,45 @@ end
                    arrive: arrive,
                    capacity: capacity,
                    fare: fare)
-                   
-  Booking.create!(flight: flight)
 end
+puts "done."
+puts "Duration: #{Time.now - start}"
+
+
+start = Time.now
+print "Seeding flights..."
+5000.times do
+  origin, destination = Airport.order("RANDOM()").limit(2)
+  depart_date = DateTime.parse("05/02/2018") + rand(11).days
+  depart = depart_date + rand(24).hours
+  arrive = depart + rand(2..6).hours
+  capacity = rand(18..30) * 10
+  fare = rand(200..500)
+
+  flight = Flight.create!(origin: origin,
+                   destination: destination,
+                   depart: depart,
+                   arrive: arrive,
+                   capacity: capacity,
+                   fare: fare)
+end
+puts "done."
+puts "Duration: #{Time.now - start}"
 
 #====================================================================
 
-Booking.all.each do |booking|
+start = Time.now
+print "Seeding bookings..."
+Flight.order("RANDOM()").limit(2000).each do |flight|
+  booking = Booking.create!(flight: flight)
   4.times do |n|
     Passenger.create!(name: Faker::Name.name,
                       email: "user#{n}@email.com",
                       booking: booking)
   end
 end
+puts "done."
+puts "Duration: #{Time.now - start}"
 
 #====================================================================
 
