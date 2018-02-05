@@ -1,0 +1,50 @@
+<%= render "flight_info" %>
+
+<div class="row"> 
+  <div class="flight-fare col-md-6 col-md-offset-3 ">
+    <%= sprintf("Fare: $ %.2f", @flight.fare) %>
+    <br />
+    <%= sprintf("Total Fare: %d x $ %.2f = $ %.2f", @seats, @flight.fare, @seats * @flight.fare) %>
+    <br />
+    <%= content_tag(:div, "Available Seats: #{@flight.available_seats}/#{@flight.capacity}") %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-offset-2 col-md-8">
+    <%= form_for @booking do |f| %>
+      <h2>Tickets</h2>
+      
+      <% if @booking.errors.any? %>
+        <div class="alert alert alert-danger">
+          <ul>
+            <% @booking.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      
+      <%= f.hidden_field :flight_id, value: @flight.id %>
+      <%= hidden_field_tag :flight_id, value: @flight.id %>
+      <%= hidden_field_tag :seats, value: @seats %>
+      <% tickets = 0 %>
+      <%= f.fields_for :passengers do |ff| %>
+        <div class="form-group">
+          <%= ff.label :name, "Ticket ##{tickets += 1} Name" %>
+          <%= ff.text_field :name, class: "form-control" %>
+        <div class="form-group">
+          <%= ff.label :email, "Ticket ##{tickets} Email" %>
+          <%= ff.email_field :email, class: "form-control" %>
+        </div>
+      <% end %>
+      <%= f.submit "Submit", class: "btn btn-primary btn-block" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <%= link_to "Go back", root_url %>
+  </div>
+</div>

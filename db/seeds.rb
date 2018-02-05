@@ -49,3 +49,20 @@ Booking.all.each do |booking|
 end
 
 #====================================================================
+
+flight = Flight.create!(origin: Airport.find(1),
+                        destination: Airport.find(2),
+                        depart: DateTime.now,
+                        arrive: DateTime.now + 6.hours,
+                        capacity: 3,
+                        fare: 100.00)
+                        
+booking = Booking.create!(flight: flight)
+
+Passenger.create!(name: Faker::Name.name,
+                  email: "pass1@email.com",
+                  booking: booking)
+                  
+Passenger.create!(name: Faker::Name.name,
+                  email: "pass2@email.com",
+                  booking: booking)                 

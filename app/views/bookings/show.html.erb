@@ -1,0 +1,33 @@
+<%= render "flight_info" %>
+
+<% if flash.any? %>
+  <div class="row">
+    <% flash.each do |k, v| %>
+      <div class="col-md-8 col-md-offset-2 alert alert-<%= k %>">
+        <%= v %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <% if @booking.passengers.any? %>
+      <ol class="ticket-info">
+        <h2 class="ticket-code">Tickets</h2>
+        <% ticket_prefix = "#{@booking.flight.origin.iata}#{@booking.flight.destination.iata}-#{@booking.flight.id}-#{@booking.id}" %>
+        <% @booking.passengers.each do |p| %>
+        <li>
+          <%= "#{ticket_prefix}-#{p.id}" %> => <%= p.name %> (<%= p.email %>)
+        </li>
+        <% end %>
+      </ol>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <%= link_to "Go back", root_url %>
+  </div>
+</div>

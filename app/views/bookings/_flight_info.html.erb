@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="flight-id col-md-4 col-md-offset-4">
+    <h1>Flight no. <%= @flight.id %></h1>
+  </div>
+</div>  
+
+<div class="row">
+  <div class="origin route-info col-md-4 col-md-offset-1 col-xs-4 col-xs-offset-1">
+    <%= content_tag(:div, @flight.origin.iata, class: "airport-iata") %>
+    <%= content_tag(:div, @flight.origin.name, class: "airport-name") %>
+    <%= content_tag(:div, "#{@flight.origin.municipality}, #{@flight.origin.country.name}  (#{@flight.origin.country.iso})", class: "airport-location") %>
+    <%= content_tag(:div, "Departure: #{@flight.depart}", class: "flight-time") %>
+  </div>
+  <div class="destination route-info col-md-4 col-md-offset-2 col-xs-4 col-xs-offset-2">
+    <%= content_tag(:div, @flight.destination.iata, class: "airport-iata") %>
+    <%= content_tag(:div, @flight.destination.name, class: "airport-name") %>
+    <%= content_tag(:div, "#{@flight.destination.municipality}, #{@flight.destination.country.name} (#{@flight.destination.country.iso})", class: "airport-location") %>
+    <%= content_tag(:div, "Arrival: #{@flight.arrive}", class: "flight-time") %>
+  </div>
+</div>
+
+<div class="row"> 
+  <div class="col-md-12 flight-duration">
+    <span class="glyphicon glyphicon-plane"></span> <%= @flight.origin.iata %> <div class="line"><span class="space"><%= @flight.duration %></span></div> <%= @flight.destination.iata %> <span class="glyphicon glyphicon-plane"></span>
+  </div>
+</div>

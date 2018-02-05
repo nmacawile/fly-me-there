@@ -1,8 +1,10 @@
 <% if @flights.any? %>
   <%= form_tag new_booking_path, enforce_utf8: false , method: :get do %>
+    <%= hidden_field_tag :seats, params[:seats] %>
     <table class="table table-striped table-hover">
       <thead>
         <tr>
+          <th>Flight #</th>
           <th>Route</th>
           <th>Description</th>
           <th>Departure</th>
@@ -15,6 +17,8 @@
       <tbody>
         <% @flights.each do |flight| %>
         <tr class="booking-row">
+          <td><%= flight.id %></td>
+          
           <td title="<%="#{flight.origin.name} to #{flight.destination.name}" %>">
             <div><strong><%= flight.origin.iata %></strong></div>
             <div><strong><%= flight.destination.iata %></strong></div>
@@ -35,7 +39,7 @@
             <div><%= flight.arrive.strftime('%b %d, %Y') %></div>
           </td>
           <td><%= "#{flight.available_seats}/#{flight.capacity}" %></td>
-          <td><%= radio_button_tag :flight, flight.id, false, class: ["radio", "booking-radio"] %></td>
+          <td><%= radio_button_tag :flight_id, flight.id, false, class: ["radio", "booking-radio"] %></td>
         </tr>
         <% end %>
       </tbody>
