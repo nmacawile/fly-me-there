@@ -1,0 +1,23 @@
+Congratulations, <%= @passenger.name %>! You have successfully booked Flight no. <%= @flight.id %>. 
+Your ticket code is: 
+---------------------------------
+<%= @passenger.ticket_code %>
+---------------------------------
+Here are the details for this flight:
+
+Route: <%= "#{@flight.origin.iata}-#{@flight.destination.iata}" %>
+Departure:<%= @flight.depart %>
+Arrival: <%= @flight.arrive %>
+Duration: <%= @flight.duration %>
+
+Origin
+IATA: <%= @flight.origin.iata %>
+Airport name: <%= @flight.origin.name %>
+Location: <%= @flight.origin.location %>
+
+Destination
+IATA: <%= @flight.destination.iata %>
+Airport name: <%= @flight.destination.name %>
+Location: <%= @flight.destination.location %>
+    
+  

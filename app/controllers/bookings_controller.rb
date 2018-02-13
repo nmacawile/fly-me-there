@@ -20,6 +20,9 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     if @booking.save
+      @booking.passengers.each do |passenger|
+        PassengerMailer.booking_email(passenger)
+      end
       flash[:success] = "You have successfully booked this flight."
       redirect_to @booking
     else

@@ -6,6 +6,10 @@ class Airport < ApplicationRecord
                    uniqueness: { case_sensitive: false }
   validates :name, presence: true
   
+  def location
+    "#{municipality}, #{country.name} (#{country.iso})"
+  end
+  
   def self.list
     grouped_list = {}
     includes(:country).order("countries.name", :name).each do |a|

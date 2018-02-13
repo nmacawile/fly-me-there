@@ -1,0 +1,37 @@
+Congratulations, <strong><%= @passenger.name %></strong>! You have successfully booked Flight no. <%= @flight.id %>. 
+Your ticket code is:
+
+<h1><%= @passenger.ticket_code %></h1>
+
+Here are the details for this flight:
+
+<table>
+  <tbody>
+    <tr><th>Flight no.</th><td><%= @flight.id %></td></tr>
+    <tr><th>Route</th><td><%= "#{@flight.origin.iata}-#{@flight.destination.iata}" %></td></tr>
+    <tr><th>Departure</th><td><%= @flight.depart %></td></tr>
+    <tr><th>Arrival</th><td><%= @flight.arrive %></td></tr>
+    <tr><th>Duration</th><td><%= @flight.duration %></td></tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Origin</th>
+      <th>Destination</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>IATA</th><td><%= @flight.origin.iata %></td><td><%= @flight.destination.iata %></td>
+    </tr>
+    <tr>
+      <th>Airport name</th><td><%= @flight.origin.name %></td><td><%= @flight.destination.name %></td>
+    </tr>
+    <tr>
+      <th>Location</th><td><%= @flight.origin.location %></td><td><%= @flight.destination.location %></td>
+    </tr>
+  </tbody>
+</table>

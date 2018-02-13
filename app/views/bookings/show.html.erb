@@ -15,10 +15,9 @@
     <% if @booking.passengers.any? %>
       <ol class="ticket-info">
         <h2 class="ticket-code">Tickets</h2>
-        <% ticket_prefix = "#{@booking.flight.origin.iata}#{@booking.flight.destination.iata}-#{@booking.flight.id}-#{@booking.id}" %>
         <% @booking.passengers.each do |p| %>
         <li>
-          <%= "#{ticket_prefix}-#{p.id}" %> => <%= p.name %> (<%= p.email %>)
+          <%= p.ticket_code %> => <%= p.name %> (<%= p.email %>)
         </li>
         <% end %>
       </ol>
